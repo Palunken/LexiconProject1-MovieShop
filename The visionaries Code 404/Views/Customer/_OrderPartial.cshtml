@@ -1,0 +1,37 @@
+﻿@model The_visionaries_Code_404.Models.OrderViewModel
+
+<tr>
+    <td>@Model.CustomerName</td>
+    <td>@Model.OrderDate.ToString("yyyy-MM-dd HH:mm")</td>
+    <td>@Model.TotalCost.ToString("C")</td>
+    <td>
+        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#orderDetails-@Model.OrderDate.Ticks" aria-expanded="false" aria-controls="orderDetails-@Model.OrderDate.Ticks">
+            View
+        </button>
+    </td>
+</tr>
+<tr class="collapse" id="orderDetails-@Model.OrderDate.Ticks">
+    <td colspan="4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model.Movies)
+                {
+                    <tr>
+                        <td>@movie.Title</td>
+                        <td>@movie.Price.ToString("C")</td>
+                        <td>@movie.Quantity</td>
+                        <td>@movie.TotalPrice.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </td>
+</tr>

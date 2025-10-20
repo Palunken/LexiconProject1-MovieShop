@@ -1,0 +1,54 @@
+﻿@model List<The_visionaries_Code_404.Data.Movie>
+
+@{
+    ViewData["Title"] = "All Movies";
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+    int pageSize = ViewBag.PageSize;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">All Movies</h2>
+    @using (Html.BeginForm("Index", "Movie", FormMethod.Get, new { @class = "d-flex align-items-center" }))
+    {
+        <label for="PageSize" class="me-2">Movies per page:</label>
+        @Html.DropDownList("pageSize", ViewBag.PageSizeOptions as IEnumerable<SelectListItem>, new { @class = "form-select w-auto", onchange = "this.form.submit();" })
+        <input type="hidden" name="page" value="@currentPage" />
+    }
+</div>
+
+
+    <div class="row d-flex justify-content-center mt-4">
+        @foreach (var movie in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <partial name="_DisplayMoviePartial" model="movie" />
+            </div>
+        }
+    </div>
+
+
+<div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+        @if (currentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="Movie" asp-action="Index" asp-route-page="@(currentPage - 1)" asp-route-pageSize="@pageSize">Previous</a>
+            </li>
+        }
+
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" asp-controller="Movie" asp-action="Index" asp-route-page="@i" asp-route-pageSize="@pageSize">@i</a>
+            </li>
+        }
+
+        @if (currentPage < totalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="Movie" asp-action="Index" asp-route-page="@(currentPage + 1)" asp-route-pageSize="@pageSize">Next</a>
+            </li>
+        }
+    </ul>
+</div>

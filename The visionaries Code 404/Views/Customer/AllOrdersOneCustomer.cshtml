@@ -1,0 +1,69 @@
+﻿@model List<The_visionaries_Code_404.Models.OrderViewModel>
+
+@{
+    ViewData["Title"] = "All Orders for " + ViewBag.CustomerName;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">All Orders Placed by @ViewBag.CustomerName</h2>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th>Order Date</th>
+                <th>Total Cost</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@order.TotalCost.ToString("C")</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#orderDetails-@order.OrderDate.Ticks" aria-expanded="false" aria-controls="orderDetails-@order.OrderDate.Ticks">
+                            View
+                        </button>
+                    </td>
+                </tr>
+                <tr class="collapse" id="orderDetails-@order.OrderDate.Ticks">
+                    <td colspan="3">
+                        <h5>Order Details</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Movie Title</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var movie in order.Movies)
+                                {
+                                    <tr>
+                                        <td>@movie.Title</td>
+                                        <td>@movie.Price.ToString("C")</td>
+                                        <td>@movie.Quantity</td>
+                                        <td>@movie.TotalPrice.ToString("C")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <p><strong>Total Order Cost:</strong> @order.TotalCost.ToString("C")</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        No orders found for this customer.
+    </div>
+}

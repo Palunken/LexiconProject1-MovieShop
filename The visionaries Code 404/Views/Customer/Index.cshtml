@@ -1,0 +1,28 @@
+﻿@model IEnumerable<The_visionaries_Code_404.Data.Customer>
+
+@{
+    ViewData["Title"] = "All Customers";
+}
+
+<center><h2 class ="fw-bold">All Customers</h2></center>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <partial name="_CustomerPartial" model="customer" />
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,41 @@
+﻿@model The_visionaries_Code_404.Data.Movie
+
+@{
+    var showAddToCart = ViewData["ShowAddToCart"] as bool? ?? true;
+}
+
+<div class="card m-1" style="max-width: 190px; width: 100%;">
+    <div class="card-header text-capitalize text-center">
+        <p>@Model.Title</p>
+    </div>
+
+    <div class="card-img-container text-center">
+        @if (Model.Image != null)
+        {
+            <a asp-controller="Movie" asp-action="MovieDetails" asp-route-id="@Model.Id" title="View details of @Model.Title">
+                <img src="@Model.Image" alt="Poster for the movie @Model.Title" class="fit-image" style="width:100%; height:325px; object-fit:cover;" />
+            </a>
+        }
+        else
+        {
+            <a asp-controller="Movie" asp-action="MovieDetails" asp-route-id="@Model.Id" title="View details of @Model.Title">
+                <img src="https://critics.io/img/movies/poster-placeholder.png" alt="Placeholder image for movie poster" class="fit-image" style="width:100%; height:325px; object-fit: cover;" />
+            </a>
+        }
+    </div>
+
+    @if (showAddToCart)
+    {
+        <div class="text-center mt-2">
+            <button class="btn btn-primary" onclick="AddToCart(@Model.Id)" title="Add To Cart">
+                Add to cart
+            </button>
+        </div>
+    }
+
+    <div class="card-body" style="height:130px;">
+        <h6><strong>Director:</strong> @Model.Director</h6>
+        <h6><strong>Released:</strong> @Model.ReleaseYear</h6>
+        <h6><strong>Price:</strong> @Model.Price.ToString("C")</h6>
+    </div>
+</div>

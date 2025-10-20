@@ -1,0 +1,66 @@
+﻿@model The_visionaries_Code_404.Models.HomeViewModel
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to The Visionaries Code Movie Shop</h1>
+        <p>Your favourite Movie Shop!</p>
+        <a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Browse Movies</a>
+    </div>
+</section>
+<hr />
+
+<center><h3><strong>Most popular movies</strong></h3></center>
+<div class="movie-container" id="mostPopularMovies">
+    @foreach (var movie in Model.MostPopularMovies)
+    {
+        <div class="movie-card">
+            <partial name="../Movie/_DisplayMoviePartial" model="movie"></partial>
+        </div>
+    }
+</div>
+<hr />
+
+<center><h3><strong>The 5 newest movies</strong></h3></center>
+<div class="movie-container" id="newestMovies">
+    @foreach (var movie in Model.NewestFiveMovies)
+    {
+        <div class="movie-card">
+            <partial name="../Movie/_DisplayMoviePartial" model="movie"></partial>
+        </div>
+    }
+</div>
+<hr />
+
+<center><h3><strong>The 5 oldest movies</strong></h3></center>
+<div class="movie-container" id="oldestMovies">
+    @foreach (var movie in Model.OldestFiveMovies)
+    {
+        <div class="movie-card">
+            <partial name="../Movie/_DisplayMoviePartial" model="movie"></partial>
+        </div>
+    }
+</div>
+<hr />
+
+<center><h3><strong>The 5 cheapest movies</strong></h3></center>
+<div class="movie-container" id="cheapestMovies">
+    @foreach (var movie in Model.CheapestFiveMovies)
+    {
+        <div class="movie-card">
+            <partial name="../Movie/_DisplayMoviePartial" model="movie"></partial>
+        </div>
+    }
+</div>
+
+<center>
+    <h3>
+        The customer with the most expensive order:
+        @{
+            if (Model.CustomerMostExpensiveOrder != null)
+            {
+                <span>@Model.CustomerMostExpensiveOrder.FirstName</span> <span>@Model.CustomerMostExpensiveOrder.LastName</span>
+
+            }
+        }
+    </h3>
+</center>

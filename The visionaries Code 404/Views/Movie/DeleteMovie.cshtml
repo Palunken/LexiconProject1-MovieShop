@@ -1,0 +1,21 @@
+﻿@model The_visionaries_Code_404.Data.Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<div class="text-center mt-4">
+    <h2 class="fw-bold">Are you sure you want to delete @Model.Title?</h2>
+    <h3>This action cannot be undone.</h3>
+</div>
+
+<div>
+    <partial name="_DeleteMovie" model="Model" />
+</div>
+
+    <form asp-action="DeleteMovie" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger me-2">Delete</button>
+        <a class="btn btn-secondary" asp-controller="Movie" asp-action="ListMovies">Cancel</a>
+    </form>
+

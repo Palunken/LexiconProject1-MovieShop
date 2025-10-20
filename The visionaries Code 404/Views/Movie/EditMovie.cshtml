@@ -1,0 +1,17 @@
+﻿@model The_visionaries_Code_404.Data.Movie
+
+@{
+    ViewData["Title"] = "Edit Movie";
+}
+
+<center><h1 class="fw-bold">Edit @Model.Title</h1></center>
+<hr />
+
+<partial name="_EditMovie" model="Model"></partial>
+
+<form asp-action="EditMovie" method="post">
+    <input type="hidden" asp-for="Id" />
+    <a class="btn btn-secondary me-2" asp-controller="Movie" asp-action="ListMovies">Back to admin movie </a>
+    <a class="btn btn-primary" onclick="history.back()">Back</a>
+</form>
+

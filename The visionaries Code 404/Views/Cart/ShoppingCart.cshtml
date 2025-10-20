@@ -1,0 +1,63 @@
+﻿@model The_visionaries_Code_404.Models.CartItem
+
+<h2>Your Shopping Cart</h2>
+
+    @if (Model.MovieList.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Movie</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model.MovieList.OrderBy(m => m.Id))
+                {
+                    <tr>
+                        <td>
+                            <div class="align-middle d-flex align-items-center">
+                                <img src="@(!string.IsNullOrEmpty(movie.Image) ? movie.Image : "https://critics.io/img/movies/poster-placeholder.png")"
+                                     alt="@movie.Title"
+                                     class="movie-thumbnail me-3" />
+                                <span class="movie-title">@movie.Title</span>
+                            </div>
+                        </td>
+                        <td>@movie.Price.ToString("C")</td>
+                        <td>@Model.CartList.Count(id => id == movie.Id)</td>
+                    <td>@((Model.CartList.Count(id => id == movie.Id) * movie.Price).ToString("C"))</td>
+                        <td>
+                            <form asp-action="RemoveFromCart" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@movie.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">-</button>
+                            </form>
+                            <form asp-action="AddToCart" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@movie.Id" />
+                                <button type="submit" class="btn btn-success btn-sm">+</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h4 class="text-end">Total Price: <span class="fw-bold">@Model.TotalPrice.ToString("C")</span></h4>
+
+
+        <form asp-action="Checkout" method="post">
+            <h3>Checkout</h3>
+            <div class="form-group">
+                <label for="email">Email (required):</label>
+            <input type="email" name="email" id="email" value="@TempData["CustomerEmail"]" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+    }
+    else
+    {
+        <center><p>Your cart is empty.</p></center>
+        <center><a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Continue Shopping</a></center>
+    }

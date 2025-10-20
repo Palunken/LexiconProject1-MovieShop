@@ -1,0 +1,46 @@
+﻿@model The_visionaries_Code_404.Models.OrderSummary
+
+<center><h2>Thank You for Your Order!</h2></center>
+<center><p>Your order has been successfully placed. Below are the details of your order:</p></center>
+
+<h4>Customer Information</h4>
+<p>
+    <strong>Name:</strong> @Model.Customer.FirstName @Model.Customer.LastName <br />
+    <strong>Email:</strong> @Model.Customer.Email <br />
+    <strong>Billing Address:</strong> @Model.Customer.BillingAddress,
+    @Model.Customer.BillingCity, @Model.Customer.BillingZip <br />
+</p>
+
+<h4>Order Summary</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Movie Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.PurchasedMovies)
+        {
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img src="@(!string.IsNullOrEmpty(movie.Image) ? movie.Image : "https://critics.io/img/movies/poster-placeholder.png")"
+                             alt="Thumbnail for @movie.Title"
+                             style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px; margin-right: 10px;" />
+                        <span>@movie.Title</span>
+                    </div>
+                </td>
+                <td>@movie.Price.ToString("C")</td>
+                <td>@Model.CartList.Count(id => id == movie.Id)</td>
+                <td>@(((Model.CartList.Count(m => m == movie.Id)) * @movie.Price).ToString("C"))</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Total Price: @Model.TotalPrice.ToString("C")</h4>
+
+<a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Continue Shopping</a>

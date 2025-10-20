@@ -1,0 +1,24 @@
+﻿@model The_visionaries_Code_404.Data.Movie
+
+<div class="row">
+    <div>
+        <center><h2>@ViewBag.MovieMessage</h2></center>
+
+        @if (Model != null)
+        {
+                ViewData["ShowAddToCart"] = false;
+            
+
+            <center>
+                <partial name="_DisplayMoviePartial" model="Model" />
+            </center>
+        }
+    </div>
+</div>
+
+<center>
+    <a asp-controller="Movie" asp-action="AddMovie" class="btn btn-primary">
+        Add More Movies
+    </a>
+</center>
+

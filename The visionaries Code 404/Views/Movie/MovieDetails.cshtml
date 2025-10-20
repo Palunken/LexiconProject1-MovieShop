@@ -1,0 +1,29 @@
+﻿@model The_visionaries_Code_404.Data.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<h1 class="text-center mb-4">Movie Details</h1>
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Model.Image" class="img-fluid rounded-start" style="max-height: 400px; object-fit: cover;">
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+            <strong><p class="card-body" style="font-size: 22px;">@Model.Title</p></strong>
+            <p class="card-text"><strong>Director:</strong> @Model.Director</p>
+            <p class="card-text"><strong>Release Year:</strong> @Model.ReleaseYear</p>
+            <p class="card-text"><strong>Price:</strong> @Model.Price.ToString("C")</p>
+
+            <button class="btn btn-primary me-2" onclick="AddToCart(@Model.Id)" title="Add To Cart">
+                Add to cart
+            </button>
+
+            <div class="d-flex mt-3">
+                <a asp-controller="Movie" asp-action="EditMovie" asp-route-id="@Model.Id" class="btn btn-light me-2">Edit Movie</a>
+                <a asp-action="Index" class="btn btn-primary">Back to movies</a>
+            </div>
+        </div>
+    </div>
+</div>

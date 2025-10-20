@@ -1,0 +1,15 @@
+﻿@model The_visionaries_Code_404.Data.Customer
+
+<tr>
+    <td>@Model.FirstName</td>
+    <td>@Model.LastName</td>
+    <td>
+        <a href="mailto:@Model.Email" style="text-decoration:none;">@Model.Email</a>
+    </td>
+    <td>@Model.Phone</td>
+    <td>
+        <a class="btn btn-info btn-sm me-2" asp-controller="Customer" asp-action="CustomerDetails" asp-route-id="@Model.Id">Customer Details</a>
+        <a class="btn btn-primary btn-sm me-2" asp-controller="Customer" asp-action="AllOrdersOneCustomer" asp-route-id="@Model.Id">View Orders</a>
+        <a class="btn btn-light btn-sm me-2" asp-controller="Customer" asp-action="EditCustomer" asp-route-id="@Model.Id">Edit</a>
+    </td>
+</tr>

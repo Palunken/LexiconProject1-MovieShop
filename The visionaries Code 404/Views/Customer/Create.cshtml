@@ -1,0 +1,79 @@
+﻿@model The_visionaries_Code_404.Data.Customer
+
+@{
+    ViewData["Title"] = "Register Customer";
+    <center><h4>@TempData["CustomerCreateMessage"]</h4></center>
+}
+
+<h1>Register Customer</h1>
+<hr />
+<div class="createCustomerRow">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" value="@TempData["CustomerEmail"]" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingAddress" class="control-label"></label>
+                <input asp-for="BillingAddress" class="form-control" />
+                <span asp-validation-for="BillingAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingZip" class="control-label"></label>
+                <input asp-for="BillingZip" class="form-control" />
+                <span asp-validation-for="BillingZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BillingCity" class="control-label"></label>
+                <input asp-for="BillingCity" class="form-control" />
+                <span asp-validation-for="BillingCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryFirstName" class="control-label"></label>
+                <input asp-for="DeliveryFirstName" class="form-control" />
+                <span asp-validation-for="DeliveryFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryLastName" class="control-label"></label>
+                <input asp-for="DeliveryLastName" class="form-control" />
+                <span asp-validation-for="DeliveryLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryAddress" class="control-label"></label>
+                <input asp-for="DeliveryAddress" class="form-control" />
+                <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryZip" class="control-label"></label>
+                <input asp-for="DeliveryZip" class="form-control" />
+                <span asp-validation-for="DeliveryZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryCity" class="control-label"></label>
+                <input asp-for="DeliveryCity" class="form-control" />
+                <span asp-validation-for="DeliveryCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
