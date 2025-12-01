@@ -10,7 +10,7 @@ Projektet pågick under tio dagar och byggdes med ASP.NET Core MVC, Entity Frame
 ## 💡 Mina bidrag  
 Jag deltog i flera delar av utvecklingen, bland annat:
 
-- Implementering av service* och servicemetoder med LINQ-queries.  
+- Implementering av services och servicemetoder med LINQ-queries.  
 - Utveckling av vyer för att lista filmer.  
 - Implementering av pagination för filmlistan.  
 - Bidrog allmänt till olika delar av applikationen under projektets gång.
