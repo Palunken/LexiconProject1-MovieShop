@@ -44,16 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }
 
-window.onscroll = function () {
-    var btn = document.getElementById("backToTopBtn");
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        btn.style.display = "block";
-    } else {
-        btn.style.display = "none";
-    }
-};
+const backToTopBtn = document.getElementById("backToTopBtn");
 
+if (backToTopBtn) {
 
-document.getElementById("backToTopBtn").onclick = function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+    window.onscroll = function () {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    };
+
+    backToTopBtn.onclick = function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+}
