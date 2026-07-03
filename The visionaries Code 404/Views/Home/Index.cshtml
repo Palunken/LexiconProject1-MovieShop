@@ -2,8 +2,8 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Welcome to The Visionaries Code Movie Shop</h1>
-        <p>Your favourite Movie Shop!</p>
+        <h1>Welcome to The Movie Shop</h1>
+        <p>Browse and order your favourite movies</p>
         <a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Browse Movies</a>
     </div>
 </section>
@@ -59,7 +59,6 @@
             if (Model.CustomerMostExpensiveOrder != null)
             {
                 <span>@Model.CustomerMostExpensiveOrder.FirstName</span> <span>@Model.CustomerMostExpensiveOrder.LastName</span>
-
             }
         }
     </h3>
