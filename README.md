@@ -8,6 +8,26 @@ The goal of the project was to build an online movie store where users can brows
 
 ---
 
+## 📷 Screenshots
+
+### Home Page
+
+![Home Page](Screenshots/home.png)
+
+### Movie Catalog
+
+![Movie Catalog](Screenshots/movies.png)
+
+### Shopping Cart
+
+![Shopping Cart](Screenshots/cart.png)
+
+### Order Management
+
+![Order Management](Screenshots/orders.png)
+
+---
+
 ## ✨ Features
 
 * Browse the movie catalog
