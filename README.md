@@ -59,7 +59,7 @@ I contributed to several parts of the application, including:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Palunken/LexiconProject1-MovieShop.git
+git clone https://github.com/Palunken/MovieShop.git
 ```
 
 Alternatively, download the repository as a ZIP file from GitHub.
