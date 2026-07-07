@@ -8,6 +8,18 @@ The goal of the project was to build an online movie store where users can brows
 
 ---
 
+## 📷 Screenshots
+
+| Home Page | Movie Catalog |
+|------------|---------------|
+| ![](Screenshots/home.png) | ![](Screenshots/movies.png) |
+
+| Shopping Cart | Order Management (Admin) |
+|---------------|------------------|
+| ![](Screenshots/cart.png) | ![](Screenshots/orders.png) |
+
+---
+
 ## ✨ Features
 
 * Browse the movie catalog
@@ -59,7 +71,7 @@ I contributed to several parts of the application, including:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Palunken/LexiconProject1-MovieShop.git
+git clone https://github.com/Palunken/MovieShop.git
 ```
 
 Alternatively, download the repository as a ZIP file from GitHub.
